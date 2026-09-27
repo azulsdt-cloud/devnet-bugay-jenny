@@ -44,9 +44,10 @@ print(f"I am {name} and {age} years old.")
 ============================================
 A MISTAKE I MADE (or one I want to avoid)
 ============================================
-[what's something confusing or easy to get wrong
-about this topic?]
 
+This the basic knowledge for coding so there is no confusing for this part although it
+gets tricky if the code should not be redundant in terms of this part and I 
+usually make mistakes if it is a complicated situation. 
 
 ============================================
 HOW THIS CONNECTS TO SOMETHING ELSE
