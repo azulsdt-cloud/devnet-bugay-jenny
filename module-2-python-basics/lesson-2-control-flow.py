@@ -46,8 +46,9 @@ A MISTAKE I MADE (or one I want to avoid)
 [what's something confusing or easy to get wrong
 about this topic?]
 
-
-
+The mistake I just made recently is that for the if condition I forgot to use the ""
+I only realized it late and know the reason why my choice is not catching my if. I only
+did if choice == 1 
 
 ============================================
 HOW THIS CONNECTS TO SOMETHING ELSE
