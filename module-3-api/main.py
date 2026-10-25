@@ -1,32 +1,50 @@
 import requests
-import json
+import random
 
-r = requests.get('https://pokeapi.co/api/v2/pokemon/ditto')
-data = response.json()
+pokemon_list = ["pikachu", "eevee", "snorlax", "fennekin", "bulbasaur"]
 
-pokemon_list = ["pikachu", "evee", "snorlax", "fennec", "bulbasaur"]
-pokemon_height =[10, 20, 30, 40, 50]
-pokemon_weight= [1, 2, 3, 4, 5]
+while True:
+    pokemon = random.choice(pokemon_list)
 
-name = pokemon[pokemon_list],
-height = pokemon[pokemon_height],
-weight = pokemon[pokemon_weight]
+    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon}"
+    response = requests.get(url)
 
-choice=input("Choose Pokemon: ")
-choice = random.choice(pokemon_list)
-response = response.json
+    if response.status_code == 200:
+        data = response.json()
+        
+        name = data["name"]
+        height = data["height"]
+        weight = data["weight"]
+        abilities = data["abilities"]
 
+        print("WHO'S DAT POKEMON!")
+        print("Guess Pokemon [pikachu - eevee - snorlax - fennekin - bulbasaur]!")
+        print(f"Height: {height}")
+        print(f"Weight: {weight}")
+        print(f"Ability: {abilities[0]["ability"]["name"]}")
+        print("Only 3 Attempts to guess!")
 
+        for attempt in range(3):
+            print(f"Attempts: {attempt}/3")
+            guess = input("I choose you! (lowercase only): ")
+            if guess not in pokemon_list:
+                print("Invalidd Pokemon!!!")
+            elif guess == name:
+                print("Correct! You guessed the pokemon! \n")
+                break
+            else:
+                print("Wrong! Try again. \n")
+        else:
+            print("Game Over!")
+            print(f"Its: {name}")
 
-r.status_code
-200
-r.headers['content-type']
-'application/json; charset=utf8'
-r.encoding
-'utf-8'
-r.text
-'{"authenticated": true, ...'
-r.json()
-{'authenticated': True, ...}
-
-
+        while True: 
+            choice = input("Guess Again? [1-Yes/2-No]: ")
+            if choice == "1":
+                break
+            elif choice == "2":
+                print("Okay! Thanks for guessing!")
+                exit()
+    else:
+        print("Error!")
+        break
